@@ -113,10 +113,8 @@
   <section id="devis" class="contact-section section">
     <h2>Devis gratuit — <span class="highlight">réponse sous 24h</span></h2>
 
-    <!-- ⬇️ REMPLACER xgaeljzz PAR VOTRE VRAI ID FORMSPREE -->
     <form id="contact-form" class="contact-form" action="https://formspree.io/f/xgaeljzz" method="POST">
       <input type="hidden" name="_subject" value="Nouvelle demande de devis – Nano Nettoyage">
-      <input type="hidden" name="image_links" id="image_links" value="">
 
       <div class="form-row">
         <div class="field">
@@ -151,15 +149,6 @@
       <div class="field">
         <label for="c-msg"><span>Décrivez votre situation</span></label>
         <textarea id="c-msg" name="message" placeholder="Surface, type de logement, accès, situation particulière… Plus de détails = estimation plus précise."></textarea>
-      </div>
-
-      <div class="field">
-        <label for="c-photos"><span>Photos <em style="font-weight:400;color:#aaa;">(optionnel)</em></span></label>
-        <p class="field-hint">Des photos permettent une estimation plus rapide et précise</p>
-        <label for="c-photos" id="upload-btn" class="upload-button">📷 Ajouter des photos</label>
-        <input type="file" id="c-photos" name="photos" multiple accept="image/*,video/*" style="display:none;">
-        <div id="preview-container" class="preview-container"></div>
-        <div id="upload-status" class="upload-status"></div>
       </div>
 
       <div class="cta-global">
@@ -408,8 +397,9 @@
           method: "POST",
           body: new FormData(form),
           headers: { 'Accept': 'application/json' }
-        }).then(() => {
-          window.location.href = "/merci.html";
+        }).then(response => {
+          if (!response.ok) throw new Error();
+          window.location.href = "merci.html";
         }).catch(() => {
           button.disabled = false;
           button.innerText = "Obtenir mon devis gratuit";
