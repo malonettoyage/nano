@@ -3,4 +3,4 @@ Allow: /
 Disallow: /merci.html
 Disallow: /politique-de-confidentialite.html
 
-Sitemap: https://www.nanonettoyage.ch/sitemap.xml
+Sitemap: https://malonettoyage.github.io/nano/sitemap.xml
